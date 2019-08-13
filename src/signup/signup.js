@@ -11,10 +11,27 @@ import styles from './style';
 
 class SignupComponent extends React.Component {
 
-        render() {
-            return ( < div > Hello world from SignUp < /div>)
-            }
+    render() {
 
-        }
+        const { classes } = this.props;
 
-        export default withStyles(styles)(SignupComponent);
+
+
+        return ( <
+            main className = { classes.main } >
+            <
+            CssBaseline >
+
+            <
+            /CssBaseline> <
+            Paper className = { classes.paper } >
+
+            <
+            /Paper> <
+            /main>
+        )
+    }
+
+}
+
+export default withStyles(styles)(SignupComponent);
