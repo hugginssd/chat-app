@@ -18,17 +18,17 @@ class DashboardComponent extends React.Component {
 
     render() {
 
-        return ( <
-            div >
-            <
-            div > Hello world from Dashboard < /div> <
-            ChatListComponent history = { this.props.history }
-            newChatBtnFn = { this.newChatBtnClicked }
-            selectChatFn = { this.selectChat }
-            chats = { this.state.chats }
-            userEmail = { this.state.email }
-            selectedChatIndex = { this.state.selectedChatIndex } > < /ChatListComponent> <
-            /div>
+        return ( 
+        <div >
+                <div > Hello world from Dashboard </div> 
+                <ChatListComponent history = { this.props.history }
+                                    newChatBtnFn = { this.newChatBtnClicked }
+                                    selectChatFn = { this.selectChat }
+                                    chats = { this.state.chats }
+                                    userEmail = { this.state.email }
+                                    selectedChatIndex = { this.state.selectedChatIndex } > 
+                </ChatListComponent> 
+            </div>
         );
 
     }

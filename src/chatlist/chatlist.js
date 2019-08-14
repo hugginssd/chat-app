@@ -18,8 +18,46 @@ class ChatListComponent extends React.Component {
 
 
     render() {
-        return ( <
-            div > Hello from ChatList < /div>
+        const {classes} = this.props;
+        return ( 
+              <main className={classes.root}>
+                <Button variant='contained'
+                fullWidth
+                color='primary'
+                className={classes.newChatBtnFn}
+                onClick={this.newChat}></Button>
+                <List>
+                    {
+                        this.props.chats.map((_chat, _index) => {
+                            return(
+                                <div key={_index}>
+                                    <ListItem onClick={() => this.selectedChat(_index)}
+                                    className={classes.ListItem}
+                                    selected = {this.props.selectedChatIndex === _index}
+                                    alignItems = 'flex-start'>
+                                        <ListItemAvatar>
+                                            <Avatar alt='Remy Sharp'> {_chat.users.filter(_user => _user !== this.props.userEmail)[0].split(''[0])} </Avatar>
+                                        </ListItemAvatar>
+                                        <ListItemText primary={_user => _chat.users.filter(_user => _user !== this.props.userEmail)[0]}
+                                        secondary={
+                                            <React.Fragment>
+                                                <Typography component ='span' color='textPrimary'>
+                                                    {
+                                                        _chat.messages[_chat.messages.length - 1].message.substring(0,30)
+                                                    }
+                                                </Typography>
+                                            </React.Fragment>
+                                        }>
+
+                                        </ListItemText>
+                                    </ListItem>
+                                    <Divider></Divider>
+                                </div>
+                            );
+                        })
+                    }
+                </List>
+              </main>
         );
     }
 
