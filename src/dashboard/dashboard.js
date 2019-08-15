@@ -5,7 +5,7 @@ import {Button, withStyles } from '@material-ui/core';
 import styles from './style';
 import ChatViewComponent from  '../chatview/chatview';
 import ChatTextBoxComponent from '../chattextbox/chatTextBox';
-import {Dock} from '@material-ui/icons'
+import NewChatComponent from '../newchat/newchat';
 const firebase = require('firebase');
 
 class DashboardComponent extends React.Component {
@@ -44,6 +44,8 @@ class DashboardComponent extends React.Component {
            {
                this.state.selectedChat !== null && !this.state.newChatFormVisible ? 
                <ChatTextBoxComponent messageReadFn = {this.messageRead} submitMessageFn = {this.submitMessage}></ChatTextBoxComponent> : null
+           }{
+               this.state.newChatFormVisible ? <NewChatComponent></NewChatComponent> : null
            }
                 <Button className = { classes.signOutBtn } onClick={this.signOut}>Sign Out</Button>
         </div>
