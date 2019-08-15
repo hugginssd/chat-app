@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -12,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import styles from './styles';
 import Divider from '@material-ui/core/Divider';
 import NotificationImportant from '@material-ui/icons/NotificationImportant';
-const firebase = require("firebase");
+//const firebase = require("firebase");
 
 
 class ChatListComponent extends React.Component {
@@ -56,6 +55,14 @@ class ChatListComponent extends React.Component {
                                           }>
   
                                           </ListItemText>
+                                          {
+                                              _chat.receiverHasRed === false && !this.userIsSender(_chat)?
+                                              <ListItemIcon>
+                                                  <NotificationImportant className={classes.unreadMessage}>
+
+                                                  </NotificationImportant>
+                                              </ListItemIcon> : null
+                                          }
                                       </ListItem>
                                       <Divider></Divider>
                                   </div>
@@ -88,6 +95,7 @@ class ChatListComponent extends React.Component {
      this.props.selectChatFn(index);
     }
 
+    userIsSender = (chat) => chat.messages[chat.messages.length -1].sender === this.props.userEmail;
 
 }
 export default withStyles(styles)(ChatListComponent);
