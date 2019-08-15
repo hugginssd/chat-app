@@ -6,6 +6,7 @@ import styles from './style';
 import ChatViewComponent from  '../chatview/chatview';
 import ChatTextBoxComponent from '../chattextbox/chatTextBox';
 import NewChatComponent from '../newchat/newchat';
+import { async } from 'q';
 const firebase = require('firebase');
 
 class DashboardComponent extends React.Component {
@@ -93,6 +94,27 @@ class DashboardComponent extends React.Component {
         }
     }
 
+    goToChat = async(docKey, msg) =>{
+        const userInChat = docKey.split(':');
+        const chat = this.state.chats.find(_chat => usersInChat.every(_user => _chat.users.includes(_user)));
+        this.setState({newChatFormVisible: false});
+        await this.selectedChat(this.state.chats.indexOf(chat));
+        this.submitMessage(msg);
+    }
+    newChatSubmit = async (chatObj) =>{
+        const docKey = this.buildDocKey(chatObj.sendTo);
+        await firebase
+              .firestore()
+              .collections('chats')
+              .set({
+                  receiverHasRed: false,
+                  users: [this.state.email, chatObj.sendTo],
+                  messages:[{
+                      message: chatObj.message,
+                      sender: this.state.email
+                  }]
+              })
+    }
     clickedChatWhereNotSender = (chatIndex) =>this.state.chats[chatIndex].messages[this.state.chats[chatIndex].messages.length - 1].sender !== this.state.email;
 
     componentDidMount = () => {
