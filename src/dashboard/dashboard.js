@@ -46,7 +46,7 @@ class DashboardComponent extends React.Component {
                this.state.selectedChat !== null && !this.state.newChatFormVisible ? 
                <ChatTextBoxComponent messageReadFn = {this.messageRead} submitMessageFn = {this.submitMessage}></ChatTextBoxComponent> : null
            }{
-               this.state.newChatFormVisible ? <NewChatComponent></NewChatComponent> : null
+               this.state.newChatFormVisible ? <NewChatComponent goToChatFn={this.goToChat} newChatSubmitFn={this.newChatSubmit}></NewChatComponent> : null
            }
                 <Button className = { classes.signOutBtn } onClick={this.signOut}>Sign Out</Button>
         </div>
@@ -56,7 +56,7 @@ class DashboardComponent extends React.Component {
     signOut = () => firebase.auth().signOut();
 
     selectChat = async (chatIndex) => {
-     await  this.setState({selectedChat: chatIndex}); 
+     await  this.setState({selectedChat: chatIndex, newChatFormVisible: false}); 
      this.messageRead();
     }
 
@@ -94,8 +94,8 @@ class DashboardComponent extends React.Component {
         }
     }
 
-    goToChat = async(docKey, msg) =>{
-        const userInChat = docKey.split(':');
+    goToChat = async (docKey, msg) =>{
+        const usersInChat = docKey.split(':');
         const chat = this.state.chats.find(_chat => usersInChat.every(_user => _chat.users.includes(_user)));
         this.setState({newChatFormVisible: false});
         await this.selectedChat(this.state.chats.indexOf(chat));
@@ -114,6 +114,8 @@ class DashboardComponent extends React.Component {
                       sender: this.state.email
                   }]
               })
+              this.setState({newChatFormVisible: false});
+              this.selectChat(this.state.chats.length - 1);
     }
     clickedChatWhereNotSender = (chatIndex) =>this.state.chats[chatIndex].messages[this.state.chats[chatIndex].messages.length - 1].sender !== this.state.email;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {FormControl, InputLabel, Input, Button, Paper, withStyles, CssBaseline,Typography} from '@material-ui/core';
 import styles from './styles';
-import {Message} from '@material-ui/icons'
+//import {Message} from '@material-ui/icons'
 const firebase = require("firebase");
 
 class NewChatComponent extends React.Component{
@@ -49,6 +49,11 @@ class NewChatComponent extends React.Component{
 
                                     </Input>
                              </FormControl>
+                             <Button fullWidth 
+                                     className={classes.submit} 
+                                     variant="container" 
+                                     color="primary" 
+                                     type="submit">submit</Button>
                     </form>
                  </Paper>
             </main>
