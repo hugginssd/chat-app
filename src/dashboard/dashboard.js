@@ -69,12 +69,19 @@ class DashboardComponent extends React.Component {
                    timestamp: Date.now()
                }),
                receiverHasRed: false 
+               
             });
     }
 
     buildDocKey = (friend) => [this.state.email, friend].sort().join(':');
 
     newChatBtnClicked = () => this.setState({ newChatFormVisible: true, selectedChat: null });
+
+    messageRead =()=>{
+        const docKey = this.buildDocKey(this.state.chats[this.state.selectedChat].users.filter(_usr => _usr !== this.state.email)[0]);
+    }
+
+    clickedChatWhereNotSender = (chatIndex) =>this.state.chats[chatIndex].messages[this.state.chats[chatIndex].messages.length - 1].sender !== this.state.email;
 
     componentDidMount = () => {
         firebase.auth().onAuthStateChanged(async _usr => {
