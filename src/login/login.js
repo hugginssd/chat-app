@@ -39,7 +39,7 @@ class LoginComponent extends React.Component {
                         </FormControl> 
                     <FormControl required fullWidth margin = 'normal' >
                             <InputLabel htmlFor = 'login-password-input' > Enter Your Password </InputLabel> 
-                            <Input autoComplete = 'password' id = 'login-password-input' onChange = {(e) => this.userTyping('password', e)}></Input> 
+                            <Input type='password' autoComplete = 'password' id = 'login-password-input' onChange = {(e) => this.userTyping('password', e)}></Input> 
                         </FormControl> 
                         <Button type = 'submit' fullWidth variant = 'contained' color = 'primary' className = { classes.submit }> Log In </Button> 
                     </form> 
@@ -72,8 +72,10 @@ class LoginComponent extends React.Component {
                 break;
             }
     }
+
     submitLogin = (e) => {
      e.preventDefault();
+     
         firebase
         .auth()
         .signInWithEmailAndPassword(this.state.email, this.state.password)
