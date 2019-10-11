@@ -34,68 +34,38 @@ class SignupComponent extends React.Component {
         const { classes } = this.props;
 
 
-        return ( <
-            main className = { classes.main } >
-            <
-            CssBaseline > < /CssBaseline>  <
-            Paper className = { classes.paper } >
-            <
-            Typography component = 'h1'
-            variant = 'h5' >
-            Sign Up!
-            <
-            /Typography>  <
-            form onSubmit = {
-                (e) => this.submitSignup(e) }
-            className = { classes.form } >
-            <
-            FormControl required fullWidth margin = 'normal' >
-            <
-            InputLabel htmlFor = 'signup-email-input' > Enter your email < /InputLabel>  <
-            Input autoComplete = 'email'
-            onChange = {
-                (e) => this.userTyping('email', e) }
-            autoFocus id = 'signup-email-input' >
-            <
-            /Input>  <
-            /FormControl>  <
-            FormControl required fullWidth margin = 'normal' >
-            <
-            InputLabel htmlFor = 'signup-password-input' > Create a password < /InputLabel> <Input type = 'password' onChange = {(e) => this.userTyping('password', e) } id = 'signup-password-input'>  <
-            /Input>  <
-            /FormControl>  <
-            FormControl required fullWidth margin = 'normal' >
-            <
-            InputLabel htmlFor = 'signup-password-confirmation-input' > Confirm your password < /InputLabel>  <
-            Input type = 'password'
-            onChange = {
-                (e) => this.userTyping('passwordConfirmation', e) }
-            id = 'signup-password-confirmation-input' >
-            <
-            /Input>  <
-            /FormControl> <
-            Button type = 'submit'
-            fullWidth variant = 'contained'
-            color = 'primary'
-            className = { classes.submit } > Submit < /Button>  <
-            /form>  {
-                this.state.signupError ?
-                    <
-                    Typography className = { classes.errorText }
-                component = 'h5'
-                variant = 'h6' > { this.state.signupError } <
-                    /Typography>:
-                null
-            } <
-            Typography component = 'h5'
-            variant = 'h6'
-            className = { classes.hasAccountHeader } > Already have an account ? < /Typography> <
-            Link className = { classes.logInLink }
-            to = './login' > Log In! < /Link> <
-            /Paper>  <
-            /main>
-        );
-    }
+        return ( 
+                <main className = { classes.main } >
+                    <CssBaseline> </CssBaseline>  
+                    <Paper className = { classes.paper } >
+                    <Typography component = 'h1' variant = 'h5' > Sign Up!
+                    </Typography> 
+                        <form onSubmit = {(e) => this.submitSignup(e) } className = { classes.form } >
+                                < FormControl required fullWidth margin = 'normal' >
+                                    <InputLabel htmlFor = 'signup-email-input' > Enter your email </InputLabel> 
+                                    <Input autoComplete = 'email' onChange = {(e) => this.userTyping('email', e) } autoFocus id = 'signup-email-input' >
+                                </Input> 
+                                </FormControl> 
+                                    <FormControl required fullWidth margin = 'normal' >
+                                <InputLabel htmlFor = 'signup-password-input' > Create a password </InputLabel> 
+                                <Input type = 'password' onChange = {(e) => this.userTyping('password', e) } id = 'signup-password-input'>  </Input>  
+                                    </FormControl>  
+                                    <FormControl required fullWidth margin = 'normal' >
+                                    <InputLabel htmlFor = 'signup-password-confirmation-input' > Confirm your password </InputLabel>  
+                                    <Input type = 'password' onChange = {(e) => this.userTyping('passwordConfirmation', e) } id = 'signup-password-confirmation-input' >
+                                    </Input>  
+                                </FormControl> 
+                                <Button type = 'submit' fullWidth variant = 'contained'  color = 'primary' className = { classes.submit } > Submit </Button> 
+                    </form> 
+                        {this.state.signupError ?
+                                <Typography className = { classes.errorText } component = 'h5'  variant = 'h6' > { this.state.signupError }  </Typography>:null
+                        } 
+                    <Typography component = 'h5' variant = 'h6' className = { classes.hasAccountHeader } > Already have an account ? </Typography> 
+                    <Link className = { classes.logInLink } to = './login' > Log In! </Link> 
+                    </Paper> 
+                </main>
+                        );
+                    }
 
     formIsValid = () => this.state.password === this.state.passwordConfirmation;
 

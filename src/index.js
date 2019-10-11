@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import {Redirect, Route, BrowserRouter as Router } from 'react-router-dom';
 import LoginComponent from './login/login';
 import SignupComponent from './signup/signup';
 import DashboardComponent from './dashboard/dashboard';
@@ -20,28 +20,15 @@ firebase.initializeApp({
     appId: "1:347502776442:web:e909df12d5137eaf"
 });
 
-const routing = ( <
-    Router >
-    <
-    div id = "routing-container" >
-    <
-    Route path = '/login'
-    component = { LoginComponent } >
-
-    <
-    /Route> <
-    Route path = '/signup'
-    component = { SignupComponent } >
-
-    <
-    /Route> <
-    Route path = '/dashboard'
-    component = { DashboardComponent } >
-
-    <
-    /Route> <
-    /div>  <
-    /Router>
+const routing = (
+     <Router>
+        <div id = "routing-container" >
+                    <Route path = '/login' component = { LoginComponent } exact={true} ></Route>
+                    <Route exact path="/login" render={() => <Redirect to="/login" />}></Route>
+                    <Route path = '/signup' component = { SignupComponent } ></Route> 
+                    <Route path = '/dashboard' component = { DashboardComponent } ></Route>
+         </div>  
+     </Router>
 );
 
 
