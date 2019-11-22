@@ -7,18 +7,18 @@ import LoginComponent from './login/login';
 import SignupComponent from './signup/signup';
 import DashboardComponent from './dashboard/dashboard';
 
-const firebase = require("firebase");
-require("firebase/firestore");
+// const firebase = require("firebase");
+// require("firebase/firestore");
 
-firebase.initializeApp({
-    apiKey: "AIzaSyChUmimdAXTxkDpj9UIt0zAm7D_FDvB-zU",
-    authDomain: "chat-app-21680.firebaseapp.com",
-    databaseURL: "https://chat-app-21680.firebaseio.com",
-    projectId: "chat-app-21680",
-    storageBucket: "chat-app-21680.appspot.com",
-    messagingSenderId: "347502776442",
-    appId: "1:347502776442:web:e909df12d5137eaf"
-});
+// firebase.initializeApp({
+//     apiKey: "AIzaSyChUmimdAXTxkDpj9UIt0zAm7D_FDvB-zU",
+//     authDomain: "chat-app-21680.firebaseapp.com",
+//     databaseURL: "https://chat-app-21680.firebaseio.com",
+//     projectId: "chat-app-21680",
+//     storageBucket: "chat-app-21680.appspot.com",
+//     messagingSenderId: "347502776442",
+//     appId: "1:347502776442:web:e909df12d5137eaf"
+// });
 
 const routing = (
      <Router>
